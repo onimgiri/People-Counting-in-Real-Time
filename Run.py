@@ -232,6 +232,7 @@ def people_counter():
 					# line, count the object
 					if direction < 0 and centroid[1] < H // 2:
 						totalUp += 1
+						print("ID:", objectID, 'crossed going up at', time.strftime("%c"))
 						move_out.append(totalUp)
 						to.counted = True
 
@@ -240,6 +241,7 @@ def people_counter():
 					# center line, count the object
 					elif direction > 0 and centroid[1] > H // 2:
 						totalDown += 1
+						print("ID:", objectID, 'crossed going down at', time.strftime("%c"))
 						move_in.append(totalDown)
 						# if the people limit exceeds over threshold, send an email alert
 						if sum(total) >= config.Threshold:
@@ -302,7 +304,7 @@ def people_counter():
 			writer.write(frame)
 
 		# show the output frame
-		cv2.imshow("Real-Time Monitoring/Analysis Window", frame)
+		#cv2.imshow("Real-Time Monitoring/Analysis Window", frame)
 		key = cv2.waitKey(1) & 0xFF
 		# if the `q` key was pressed, break from the loop
 		if key == ord("q"):
